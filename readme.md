@@ -1,10 +1,33 @@
-# plan*
+# plan* Modified
+
+Optimized searches.
+
+Added several useful functions:
+
+![](images/1.png)
+
+![](images/2.png)
+
+------
+
+# Build:
+
+simply run `php -S localhost:8000` in root directory
+
+and open `http://localhost:8000` in ur browser
+
+------
+
+# About
 
 A PHP-based application that help students of NTU (Nanyang Technological University) to plan their courses.
 
 The application do web-scraping of course data from NTU public server, parses the data and stores them into meaningful content, and then do the scheduling of the courses based on user input.
 
+------
+
 ### Back-end Architecture
+
 * Getter ([getter.php](https://github.com/kenrick95/plan/blob/master/back_end/getter.php))
   - fetch data from NTU's server ([course schedule](https://wish.wis.ntu.edu.sg/webexe/owa/aus_schedule.main) <sub>([directly to this](https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.main_display1))</sub> and [exam schedule](https://wis.ntu.edu.sg/webexe/owa/exam_timetable_und.main))
   - store the HTML file locally

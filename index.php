@@ -106,7 +106,7 @@ require("back_end/config.php");
                     <nav id="pager_nav" >
                         <ul class="pager">
                             <li><a class="pointer" id="page_prev" title="Keyboard shortcut: k, &larr;">&larr; Previous</a></li>
-                            <li><b id="page_number">1</b> of <b id="page_length">42</b></li>
+                            <li><input type="number" id="page_input" min="1" value="1" style="width:50px;text-align:center;display:inline-block;"> of <b id="page_length">42</b></li>
                             <li><a class="pointer" id="page_next" title="Keyboard shortcut: j, &rarr;">Next &rarr;</a></li>
                         </ul>
                     </nav>
@@ -149,6 +149,8 @@ require("back_end/config.php");
             <br />
 
             &copy; <?php echo date("Y"); ?> <a href="https://github.com/edocsss" target="_blank" data-goatcounter-click="github-edwin">Edwin Candinegara</a> &amp; <a href="https://kenrick95.org" target="_blank" data-goatcounter-click="github-kenrick">Kenrick</a>
+            <br />
+            &copy; <?php echo date("Y"); ?> Modified by <a href="https://github.com/HackerRouter" target="_blank">HackerRouter</a>
             </footer>
         </div>
 
@@ -167,6 +169,9 @@ require("back_end/config.php");
                         </p>
                         <p>
                             This application was made during exam period of Semester 1, A.Y. 2014-15, by <a href="https://github.com/edocsss" target="_blank" data-goatcounter-click="github-edwin">Edwin Candinegara</a> &amp; <a href="https://kenrick95.org" target="_blank" data-goatcounter-click="github-kenrick">Kenrick</a>.
+                        </p>
+                        <p>
+                            It is modified by <a href="https://github.com/HackerRouter" target="_blank">HackerRouter</a>.
                         </p>
                         <p>
                             <b>Note:</b> Class schedule and exam schedule data is crawled from NTU public server that does not require login for the data access. We do not claim any intellectual property over this data.
@@ -305,6 +310,32 @@ require("back_end/config.php");
 
                     <div class="row">
                         <div class="col-xs-12">
+                            <hr>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="lunch_break_checkbox"> 
+                                    <strong>I need to have lunch</strong> (ensure at least one lunch slot per day: 1100-1330)
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="cc_break_checkbox"> 
+                                    <strong>Give me some time for CC</strong> (for ML/CC courses, ensure free slots before and after)
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="sleep_more_checkbox"> 
+                                    <strong>I wanna sleep more</strong> (maximize days with no classes before 0900)
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="teleport_checkbox"> 
+                                    <strong>I cannot teleport</strong> (for TUT courses, ensure previous courses are LEC or TUT only)
+                                </label>
+                            </div>
+                            <hr>
                             <p id="free_time_selection_text">
                                     The long awaited feature is here! <br>
                                     You can decide when you want to take a break easily! <br>

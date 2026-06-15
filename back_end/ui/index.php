@@ -79,6 +79,8 @@ require("../config.php");
 
             <footer>
             &copy; <?php echo date("Y"); ?> <a href="https://github.com/edocsss" target="_blank">Edwin Candinegara</a> &amp; <a href="https://kenrick95.org" target="_blank">Kenrick</a>
+            <br />
+            &copy; <?php echo date("Y"); ?> Modified by <a href="https://github.com/HackerRouter" target="_blank">HackerRouter</a>
             </footer>
         </div>
 

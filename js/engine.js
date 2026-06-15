@@ -117,7 +117,7 @@ $(document).ready(function ($) {
             return;
         }
         var code;
-        $("#page_number").text(idx + 1);
+        $("#page_input").val(idx + 1);
         $("#target").html(all_table[idx]);
         for (code in all_indices[idx]) {
             if (all_indices[idx].hasOwnProperty(code)) {
@@ -132,6 +132,20 @@ $(document).ready(function ($) {
     });
     $("#page_prev").click(function () {
         show_table(cur_idx - 1);
+    });
+    $("#page_input").on("change", function () {
+        var val = parseInt($(this).val(), 10);
+        if (!isNaN(val) && val >= 1 && val <= all_table.length) {
+            show_table(val - 1);
+        } else {
+            $(this).val(cur_idx + 1);
+        }
+    });
+    $("#page_input").on("keypress", function (e) {
+        if (e.which === 13) {
+            $(this).trigger("change");
+            e.preventDefault();
+        }
     });
     $("body").keypress(function (event) {
         if (event.target.nodeName.toLowerCase() !== 'input') {
@@ -207,6 +221,35 @@ $(document).ready(function ($) {
 
         // Unchecking the checkboxes
         $(".free_time_checkbox").prop("checked", false);
+    });
+
+    // Lunch break handler
+    var lunch_times = ["1100", "1130", "1200", "1230", "1300"];
+    var lunch_break_enabled = false;
+
+    $("#lunch_break_checkbox").on("change", function () {
+        lunch_break_enabled = this.checked;
+    });
+
+    // CC break handler (for ML/CC courses)
+    var cc_break_enabled = false;
+
+    $("#cc_break_checkbox").on("change", function () {
+        cc_break_enabled = this.checked;
+    });
+
+    // Sleep more handler
+    var sleep_more_enabled = false;
+
+    $("#sleep_more_checkbox").on("change", function () {
+        sleep_more_enabled = this.checked;
+    });
+
+    // Cannot teleport handler (for TUT courses)
+    var cannot_teleport_enabled = false;
+
+    $("#teleport_checkbox").on("change", function () {
+        cannot_teleport_enabled = this.checked;
     });
 
 /* ******************************************************************************************** */
@@ -402,7 +445,7 @@ $(document).ready(function ($) {
         $.ajax({
             type: "POST",
             url: "back_end/scheduler.php",
-            data: {courses: data, major: major, freetime: user_free_times_selection},
+            data: {courses: data, major: major, freetime: user_free_times_selection, need_lunch_break: lunch_break_enabled, need_cc_break: cc_break_enabled, need_sleep_more: sleep_more_enabled, cannot_teleport: cannot_teleport_enabled},
             beforeSend: function () {
                 var i, splitted;
                 // Whenever a new request is submitted, remove all table -> in the real web, there will be a loading icon to tell the user
@@ -717,6 +760,7 @@ $(document).ready(function ($) {
 
                 show_table(0);
                 $("#page_length").text(all_table.length);
+                $("#page_input").attr("max", all_table.length);
                 $("#result").show();
             }
         });
